@@ -33,6 +33,7 @@ function generatePassword(){
 
   //User input
   function userInput(){
+    totalCharacters = "";
   pwLength = prompt("How many characters would you like your password? (number between 8 and 128)");
   capitalCheck = confirm("Do you want capital letters in your password?");
   lowercaseCheck = confirm("Do you want lowercase characters in your password?");
@@ -41,25 +42,27 @@ function generatePassword(){
   }
 
   //get a user input
-  userInput();
   
   //Set the total characters used
-  if(capitalCheck === true){
-    totalCharacters = totalCharacters + capitalList;
-  }
-  if(lowercaseCheck === true){
-    totalCharacters = totalCharacters + lowercaseList;
-  }
-  if(numberCheck === true){
-    totalCharacters = totalCharacters + numberList;
-  }
-  if(specialCheck === true){
-    totalCharacters = totalCharacters + specialCharacterList;
-  } 
+  
   //check if they have correct user input
   while(totalCharacters === "" || pwLength < 8 || pwLength > 128){
-    alert("Please input correct parameters");
     userInput();
+    if(capitalCheck === true){
+      totalCharacters = totalCharacters + capitalList;
+    }
+    if(lowercaseCheck === true){
+      totalCharacters = totalCharacters + lowercaseList;
+    }
+    if(numberCheck === true){
+      totalCharacters = totalCharacters + numberList;
+    }
+    if(specialCheck === true){
+      totalCharacters = totalCharacters + specialCharacterList;
+    }
+    if(totalCharacters === "" || pwLength < 8 || pwLength > 128){
+    alert("Please input correct parameters");
+    }
   }
 
   console.log(totalCharacters);
