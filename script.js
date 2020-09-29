@@ -23,15 +23,26 @@ function generatePassword(){
   //Password characters allowed
   var totalCharacters = "";
 
-  //User input
-  var pwLength = prompt("How many characters would you like your password? (number between 8 and 128)");
-  var capitalCheck = confirm("Do you want capital letters in your password?");
-  var lowercaseCheck = confirm("Do you want lowercase characters in your password?");
-  var numberCheck = confirm("Do you want numbers in your password?");
-  var specialCheck = confirm("Do you want special characters in your password?");
-
+  var capitalCheck = "";
+  var lowercaseCheck = "";
+  var numberCheck = "";
+  var specialCheck = "";
   var indexNumber = "";
   var characterAdder = "";
+  var totalPassword = "";
+
+  //User input
+  function userInput(){
+  pwLength = prompt("How many characters would you like your password? (number between 8 and 128)");
+  capitalCheck = confirm("Do you want capital letters in your password?");
+  lowercaseCheck = confirm("Do you want lowercase characters in your password?");
+  numberCheck = confirm("Do you want numbers in your password?");
+  specialCheck = confirm("Do you want special characters in your password?");
+  }
+
+  //get a user input
+  userInput();
+  
   //Set the total characters used
   if(capitalCheck === true){
     totalCharacters = totalCharacters + capitalList;
@@ -44,12 +55,19 @@ function generatePassword(){
   }
   if(specialCheck === true){
     totalCharacters = totalCharacters + specialCharacterList;
+  } 
+  //check if they have correct user input
+  while(totalCharacters === "" || pwLength < 8 || pwLength > 128){
+    alert("Please input correct parameters");
+    userInput();
   }
 
   console.log(totalCharacters);
-
+  console.log()
   for(var i = pwLength; i > 0; i--){
-
+    indexNumber = Math.floor(Math.random() * totalCharacters.length);
+    characterAdder = totalCharacters[indexNumber];
+    totalPassword = totalPassword + characterAdder;
    }
-   return(totalCharacters);
+   return(totalPassword);
 }
