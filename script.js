@@ -13,7 +13,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-generatePassword(){
+function generatePassword(){
   var capitalList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowerCaseList = "abcdefghijklmnopqrstuvwxyz";
   var numberList = "1234567890";
@@ -24,6 +24,6 @@ generatePassword(){
   var lowercaseCheck = confirm("Do you want lowercase characters in your password?");
   var numberCheck = confirm("Do you want numbers in your password?");
   var specialCheck = confirm("Do you want special characters in your password?");
-  
+
 
 }
